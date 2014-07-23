@@ -17,16 +17,16 @@ public class ConfigurationProperties {
 		OutputStream outputFile = null;
 		//Initialising inputfile
 		InputStream inputFile = null;
-		//Creating new file named "config.properties"
-		File f = new File("config.properties");
+		//Creates new file named "config.properties"
+		File configfile = new File("config.properties");
 		try {
-			//Checks if file already exists
-			if (!f.exists()) {
-				outputFile = new FileOutputStream(f);
+			//Checks if the file already exists
+			if (!configfile.exists()) {
+				outputFile = new FileOutputStream(configfile);
 				prop.store(outputFile, null);
 			}
 			//Creates and load input file
-			inputFile = new FileInputStream(f);
+			inputFile = new FileInputStream(configfile);
 			prop.load(inputFile);
 		}
 

@@ -36,7 +36,7 @@ import com.sforce.soap.metadata.RetrieveResult;
 
 public class FileBasedMetadataCalls {
 	// Fetching values from config file
-	static Properties prop = ConfigurationProperties.getPropValues();
+	static private Properties prop = ConfigurationProperties.getPropValues();
 	// one second in milliseconds
 	private static final long ONE_SECOND = 1000;
 	// maximum number of attempts to retrieve the results
@@ -57,11 +57,11 @@ public class FileBasedMetadataCalls {
 	public void retrieveZip() throws RemoteException, Exception {
 		RetrieveRequest retrieveRequest = new RetrieveRequest();
 		// The version in package.xml overrides the version in RetrieveRequest
-		retrieveRequest.setApiVersion(30.0);
+		retrieveRequest.setApiVersion(API_VERSION);
 		setUnpackaged(retrieveRequest);
 		// Start the retrieve operation
 		AsyncResult asyncResult = metadataConnection.retrieve(retrieveRequest);
-		// String asyncResultId = asyncResult.getId();
+		
 		// Wait for the retrieve to complete
 		int poll = 0;
 		long waitTimeMilliSecs = ONE_SECOND;
@@ -80,7 +80,7 @@ public class FileBasedMetadataCalls {
 					.checkStatus(new String[] { asyncResult.getId() })[0];
 
 		} while (!asyncResult.isDone());
-		// If request has been retrieved succesfully store it in result
+		// If request has been retrieved successfully store it in result
 		if (asyncResult.getState() != AsyncRequestState.Completed) {
 			throw new Exception(asyncResult.getStatusCode() + " msg: "
 					+ asyncResult.getMessage());
@@ -115,7 +115,7 @@ public class FileBasedMetadataCalls {
 		}
 	}
 
-	private void setUnpackaged(RetrieveRequest request) throws Exception {
+	private static void setUnpackaged(RetrieveRequest request) throws Exception {
 		// Edit the path, if necessary, if your package.xml file is located
 		// elsewhere
 		File unpackedManifest = new File(MANIFEST_FILE);
@@ -125,15 +125,11 @@ public class FileBasedMetadataCalls {
 			throw new Exception("Should provide a valid retrieve manifest "
 					+ "for unpackaged content. " + "Looking for "
 					+ unpackedManifest.getAbsolutePath());
-		// Note that we populate the _package object by parsing a manifest file
-		// here.
-		// You could populate the _package based on any source for your
-		// particular application.
 		com.sforce.soap.metadata.Package p = parsePackage(unpackedManifest);
 		request.setUnpackaged(p);
 	}
 
-	private void copy(ReadableByteChannel src, WritableByteChannel dest)
+	private static void copy(ReadableByteChannel src, WritableByteChannel dest)
 			throws IOException {
 		// Use an in-memory byte buffer
 		ByteBuffer buffer = ByteBuffer.allocate(8092);
@@ -147,19 +143,20 @@ public class FileBasedMetadataCalls {
 	}
 
 	// Method parses metadata to xml
-	private com.sforce.soap.metadata.Package parsePackage(File file)
+	private static com.sforce.soap.metadata.Package parsePackage(File file)
 			throws Exception {
+		InputStream inputstream = null;
 		try {
-			InputStream is = new FileInputStream(file);
+			inputstream = new FileInputStream(file);
 
 			List<PackageTypeMembers> pd = new ArrayList<PackageTypeMembers>();
 			DocumentBuilder db = DocumentBuilderFactory.newInstance()
 					.newDocumentBuilder();
-			Element d = db.parse(is).getDocumentElement();
+			Element d = db.parse(inputstream).getDocumentElement();
 			for (Node c = d.getFirstChild(); c != null; c = c.getNextSibling()) {
 				if (c instanceof Element) {
 					Element ce = (Element) c;
-					//
+			
 					NodeList namee = ce.getElementsByTagName("name");
 					if (namee.getLength() == 0) {
 						// not
@@ -190,5 +187,9 @@ public class FileBasedMetadataCalls {
 		} catch (SAXException se) {
 			throw new Exception(se);
 		}
+		finally{
+			inputstream.close();
+		}
 	}
+	
 }

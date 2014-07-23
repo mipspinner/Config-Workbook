@@ -40,7 +40,7 @@ public class ProgressBar extends JPanel implements PropertyChangeListener {
 				setProgress(20);
 				FileBasedMetadataCalls.retrieve(metadataConnection);
 				setProgress(70);
-				CreateConfigBook.ConfigBookWrite();
+				CreateConfigBook.configBookWrite();
 				setProgress(100);
 			} catch (ConnectionException e) {
 				StringWriter sw = new StringWriter();

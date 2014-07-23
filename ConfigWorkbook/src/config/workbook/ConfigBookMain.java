@@ -15,13 +15,13 @@ import org.xml.sax.SAXException;
 import com.sforce.soap.metadata.*;
 
 public class ConfigBookMain {
-
+	
 	public static void main(String[] args) {
 		//Creating an object of this class
-		ConfigBookMain config = new ConfigBookMain();
+		ConfigBookMain configbookmain = new ConfigBookMain();
 		//Establishing a connection 
-		MetadataConnection metadataConnection = config.login(args);
-		//Checking if the connection has been establish properly
+		MetadataConnection metadataConnection = configbookmain.login(args);
+		//This is to check if the connection has been established properly
 		if (metadataConnection != null) {
 			System.out.println("Logged in Successfully...");
 			System.out.println("Retrieving Metadata.....");
@@ -32,7 +32,7 @@ public class ConfigBookMain {
 				System.out.println("Metadata Retrieved...");
 				System.out.println("Writing to Config Book...");
 				//Writing information into configbook 
-				CreateConfigBook.ConfigBookWrite();
+				CreateConfigBook.configBookWrite();
 				System.out.println("ConfigBook Created Successfully...");
 			} catch (SAXException e) {
 				
@@ -50,18 +50,26 @@ public class ConfigBookMain {
 			}
 		}
 	}
-	//Method to establish connection
+	//Method to establish a connection
 	private MetadataConnection login(String[] args) {
 		MetadataConnection metadataConnection = null;
 		Properties prop = ConfigurationProperties.getPropValues();
-
+		
 		try {
 			//Checks if all the parameters has been entered
 			if (args.length == 3) {
+				String username=args[0];
+				String password=args[1];
+				String endpoint=args[2];
 				System.out.println("Logging In...");
 				metadataConnection = SalesforceLogin.getMetadataConnection(
-						args[0], args[1], args[2]);
-			} else if (args.length == 1 && Boolean.parseBoolean(args[0])) {
+						username, password, endpoint);
+			} 
+		
+			else if (args.length == 1 && Boolean.parseBoolean(args[0]))
+				/*The username,password and endpoint are automatically retrieved from the
+				config file when the user types the keyword true */
+				{
 				System.out.println("Logging In...");
 				if (prop.getProperty("username") != null
 						&& prop.getProperty("password") != null
@@ -78,9 +86,8 @@ public class ConfigBookMain {
 				//Displays form 
 				SalesforceLoginForm loginForm = new SalesforceLoginForm();
 				loginForm.setVisible(true);
-				loginForm
-						.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-				// success = true;
+				loginForm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+			
 			}
 			return metadataConnection;
 		} catch (LoginFault ex) {

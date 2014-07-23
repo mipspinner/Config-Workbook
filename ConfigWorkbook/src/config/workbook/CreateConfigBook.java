@@ -13,9 +13,9 @@ import org.xml.sax.SAXException;
 
 public class CreateConfigBook {
 	//Fetching values from config file
-	static Properties prop = ConfigurationProperties.getPropValues();
+	static private Properties prop = ConfigurationProperties.getPropValues();
 
-	public static void ConfigBookWrite() throws SAXException, IOException,
+	public static void configBookWrite() throws SAXException, IOException,
 			ParserConfigurationException {
 		//Fetching zip file and storing it in variable zf
 		ZipFile zf = new ZipFile(prop.getProperty("retrieveresults"));
