@@ -65,9 +65,9 @@ public class SalesforceLoginForm extends JFrame implements ActionListener {
 		username.setBounds(350, 160, 350, 30);
 		password.setBounds(350, 205, 350, 30);
 		endpoint.setBounds(350, 250, 350, 30);
-		username.setText(prop.getProperty("username"));
-		password.setText(prop.getProperty("password"));
-		endpoint.setText(prop.getProperty("endpoint"));
+		username.setText(prop.getProperty(ConfigBookMain.username));
+		password.setText(prop.getProperty(ConfigBookMain.password));
+		endpoint.setText(prop.getProperty(ConfigBookMain.endpoint));
 		add(usernameLabel);
 		add(passwordLabel);
 		add(username);

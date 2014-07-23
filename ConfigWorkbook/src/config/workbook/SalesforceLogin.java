@@ -29,9 +29,9 @@ public class SalesforceLogin {
 				password);
 		
 		// Sets values of username,password and endpoint
-		prop.setProperty("username", username);
-		prop.setProperty("password", password);
-		prop.setProperty("endpoint", endpoint);
+		prop.setProperty(ConfigBookMain.username, username);
+		prop.setProperty(ConfigBookMain.password, password);
+		prop.setProperty(ConfigBookMain.endpoint, endpoint);
 
 		ConfigurationProperties.setPropValues(prop);
 

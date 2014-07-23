@@ -75,14 +75,14 @@ public class ConfigBookMain {
 				config file when the user types the keyword true */
 				{
 				System.out.println("Logging In...");
-				if (prop.getProperty("username") != null
-						&& prop.getProperty("password") != null
-						&& prop.getProperty("endpoint") != null) {
+				if (prop.getProperty(username) != null
+						&& prop.getProperty(password) != null
+						&& prop.getProperty(endpoint) != null) {
 
 					metadataConnection = SalesforceLogin.getMetadataConnection(
-							prop.getProperty("username"),
-							prop.getProperty("password"),
-							prop.getProperty("endpoint"));
+							prop.getProperty(username),
+							prop.getProperty(password),
+							prop.getProperty(endpoint));
 				} else {
 					System.out.println("Please Enter all the Details!");
 				}
