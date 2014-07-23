@@ -1,6 +1,6 @@
 package config.workbook;
 
-//Importing following files
+
 import java.awt.*;
 import javax.swing.*;
 import javax.xml.parsers.ParserConfigurationException;
@@ -17,9 +17,7 @@ import java.io.StringWriter;
 
 public class ProgressBar extends JPanel implements PropertyChangeListener {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private JProgressBar progressBar;
 	private JTextArea taskOutput;

@@ -3,9 +3,16 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="lib" path="//SAURABHGUPTA-PC/Shared Folder/metadata/metadata.jar"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="//SAURABHGUPTA-PC/Shared Folder/JAR FILES/partner.jar"/>
 	<classpathentry kind="lib" path="//SAURABHGUPTA-PC/Shared Folder/JAR FILES/tooling.jar"/>
 	<classpathentry kind="lib" path="//SAURABHGUPTA-PC/Shared Folder/JAR FILES/force-wsc-30.0.0.jar"/>
 	<classpathentry kind="lib" path="//SAURABHGUPTA-PC/Shared Folder/JAR FILES/poi-3.10-FINAL-20140208.jar"/>
+=======
+	<classpathentry kind="lib" path="E:/internship/force-wsc-31.0.0.jar"/>
+	<classpathentry kind="lib" path="E:/internship/partner.jar"/>
+	<classpathentry kind="lib" path="E:/internship/tooling.jar"/>
+	<classpathentry kind="lib" path="E:/internship/poi-3.10-FINAL-20140208.jar"/>
+>>>>>>> origin/master
 	<classpathentry kind="output" path="bin"/>
 </classpath>
