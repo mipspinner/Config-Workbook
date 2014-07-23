@@ -1,5 +1,5 @@
 package config.workbook;
-//Importing following classes
+
 import com.sforce.soap.partner.fault.ApiFault;
 import com.sforce.soap.partner.fault.LoginFault;
 import com.sforce.ws.ConnectionException;
@@ -35,17 +35,17 @@ public class ConfigBookMain {
 				CreateConfigBook.ConfigBookWrite();
 				System.out.println("ConfigBook Created Successfully...");
 			} catch (SAXException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				
 				System.out
 						.println("Please check that configuration file has been configured as per documentation and user has write access to the path specified.");
 			} catch (ParserConfigurationException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		}

@@ -1,6 +1,6 @@
 package config.workbook;
 
-//Importing following files
+
 import java.util.Properties;
 
 import com.sforce.soap.metadata.MetadataConnection;

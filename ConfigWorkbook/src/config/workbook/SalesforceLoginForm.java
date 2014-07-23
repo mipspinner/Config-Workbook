@@ -1,6 +1,6 @@
 package config.workbook;
 
-//Importing following files
+
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -20,9 +20,7 @@ import javax.swing.JTextField;
 
 public class SalesforceLoginForm extends JFrame implements ActionListener {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	// Declaring labels,buttons,font,popupmenu
 	final JTextField username, password, endpoint;
@@ -85,7 +83,7 @@ public class SalesforceLoginForm extends JFrame implements ActionListener {
 	// Adding functionality to buttons
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
 		String res = e.getActionCommand();
 		if (username.getText().equals("") || password.getText().equals("")
 				|| endpoint.getText().equals("")) {

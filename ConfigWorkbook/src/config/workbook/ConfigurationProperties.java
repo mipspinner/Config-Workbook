@@ -1,5 +1,5 @@
 package config.workbook;
-//Importing following files
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -31,7 +31,7 @@ public class ConfigurationProperties {
 		}
 
 		catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			System.out.println(e.getMessage());
 		}
 
@@ -43,7 +43,7 @@ public class ConfigurationProperties {
 		try {
 			prop.store(new FileOutputStream("config.properties"), null);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
