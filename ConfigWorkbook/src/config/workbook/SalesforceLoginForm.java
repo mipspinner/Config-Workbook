@@ -22,9 +22,12 @@ public class SalesforceLoginForm extends JFrame implements ActionListener {
 
 	
 	private static final long serialVersionUID = 1L;
-	// Declaring labels,buttons,font,popupmenu
-	final JTextField username, password, endpoint;
-	JLabel usernameLabel, passwordLabel, mandatoryLabel, endpointLabel;
+	// Declaring labels,buttons,font and popupmenu
+	final JTextField username, endpoint;
+	final JTextField password;
+	final JLabel usernameLabel, endpointLabel;
+	final JLabel passwordLabel;
+	JLabel mandatoryLabel;
 	JButton login, reset;
 	Font font;
 	JPopupMenu progressPop;
@@ -49,11 +52,11 @@ public class SalesforceLoginForm extends JFrame implements ActionListener {
 		usernameLabel.setBounds(150, 125, 150, 100);
 		passwordLabel.setBounds(150, 166, 150, 100);
 		endpointLabel.setBounds(150, 215, 200, 100);
-		// setting font
+		// setting the  font
 		usernameLabel.setFont(font);
 		passwordLabel.setFont(font);
 		endpointLabel.setFont(font);
-		// Adding buttons,tetfields and passwordfield on screen
+		// Adding buttons,textfields and passwordfield on screen
 		login = new JButton("Login");
 		reset = new JButton("Reset");
 		username = new JTextField(30);
@@ -96,7 +99,7 @@ public class SalesforceLoginForm extends JFrame implements ActionListener {
 		}
 		if (res.equals("Login")) {
 
-			// try {
+			
 
 			// Create and set up the content pane.
 			JComponent newContentPane = new ProgressBar(username.getText(),

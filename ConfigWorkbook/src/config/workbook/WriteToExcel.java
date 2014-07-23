@@ -20,16 +20,16 @@ import org.xml.sax.SAXException;
 public class WriteToExcel {
 	// Initialising workbook
 	private HSSFWorkbook workbook;
-	Properties prop = ConfigurationProperties.getPropValues();
+	private Properties prop = ConfigurationProperties.getPropValues();
 
-	// Constructor to this class
+	// Constructor of this class
 	public WriteToExcel() {
 		workbook = new HSSFWorkbook();
 	}
-
+	
 	// This method creates objects in an sheet
 	public void createObjectSheet(String sheetName, Map<Integer, Object[]> data)
-			throws SAXException, IOException, ParserConfigurationException {
+			throws SAXException,IOException, ParserConfigurationException {
 		HSSFSheet sheet = workbook.createSheet(sheetName);
 
 		for (Integer key : data.keySet()) {
@@ -38,29 +38,16 @@ public class WriteToExcel {
 			int cellnum = 0;
 			for (Object obj : data.get(key)) {
 				Cell cell = row.createCell(cellnum++);
-
-				if (obj instanceof Date)
-					cell.setCellValue((Date) obj);
-				else if (obj instanceof Boolean)
-					cell.setCellValue((Boolean) obj);
-				else if (obj instanceof String)
-					cell.setCellValue((String) obj);
-				else if (obj instanceof Double)
-					cell.setCellValue((Double) obj);
-				else if (obj instanceof Integer)
-					cell.setCellValue((Integer) obj);
+				convertTypes(cell,obj);
+				
 			}
 		}
-		// Writing on excel file
-		FileOutputStream out = new FileOutputStream(new File(
-				prop.getProperty("outputconfigfile")));
-		workbook.write(out);
-		out.close();
+		
 	}
 
 	// This method creates other sheets
-	public void createOtherSheets(String sheetName, ArrayList<Object[]> data)
-			throws IOException {
+	public void createOtherSheets(String sheetName, ArrayList<Object[]> data) throws IOException
+			 {
 		HSSFSheet sheet = workbook.createSheet(sheetName);
 
 		int rownum = 0;
@@ -70,24 +57,29 @@ public class WriteToExcel {
 			int cellnum = 0;
 			for (Object obj : objArr) {
 				Cell cell = row.createCell(cellnum++);
-
-				if (obj instanceof Date)
-					cell.setCellValue((Date) obj);
-				else if (obj instanceof Boolean)
-					cell.setCellValue((Boolean) obj);
-				else if (obj instanceof String)
-					cell.setCellValue((String) obj);
-				else if (obj instanceof Double)
-					cell.setCellValue((Double) obj);
-				else if (obj instanceof Integer)
-					cell.setCellValue((Integer) obj);
+				convertTypes(cell,obj);
 			}
 		}
-		// Writing on excel file
-		FileOutputStream out = new FileOutputStream(new File(
-				prop.getProperty("outputconfigfile")));
-		workbook.write(out);
-		out.close();
+		
 
+	}
+	
+	private void convertTypes(Cell cell,Object obj) throws IOException{
+		
+		if (obj instanceof Date)
+			cell.setCellValue((Date) obj);
+		else if (obj instanceof Boolean)
+			cell.setCellValue((Boolean) obj);
+		else if (obj instanceof String)
+			cell.setCellValue((String) obj);
+		else if (obj instanceof Double)
+			cell.setCellValue((Double) obj);
+		else if (obj instanceof Integer)
+			cell.setCellValue((Integer) obj);
+		// Writing in excel file
+				FileOutputStream out = new FileOutputStream(new File(
+						prop.getProperty("outputconfigfile")));
+				workbook.write(out);
+				out.close();
 	}
 }
