@@ -16,6 +16,10 @@ import com.sforce.soap.metadata.*;
 
 public class ConfigBookMain {
 	
+	public final static String username = "username";
+	public final static String password = "password";
+	public final static String endpoint = "endpoint";
+	
 	public static void main(String[] args) {
 		//Creating an object of this class
 		ConfigBookMain configbookmain = new ConfigBookMain();
@@ -86,14 +90,13 @@ public class ConfigBookMain {
 				//Displays form  
 				SalesforceLoginForm loginForm = new SalesforceLoginForm();
 				loginForm.setVisible(true);
-<<<<<<< HEAD
+
 				loginForm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 			
-=======
-				loginForm
-						.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+				loginForm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 				
->>>>>>> origin/master
+
 			}
 			return metadataConnection;
 		} catch (LoginFault ex) {

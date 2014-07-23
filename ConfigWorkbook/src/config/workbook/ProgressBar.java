@@ -22,7 +22,7 @@ public class ProgressBar extends JPanel implements PropertyChangeListener {
 	private JProgressBar progressBar;
 	private JTextArea taskOutput;
 	private Task task;
-	private String username, password, endpoint;
+	public String username, password, endpoint;
 
 	class Task extends SwingWorker<Void, Void> {
 		/*
