@@ -83,11 +83,17 @@ public class ConfigBookMain {
 					System.out.println("Please Enter all the Details!");
 				}
 			} else {
-				//Displays form 
+				//Displays form  
 				SalesforceLoginForm loginForm = new SalesforceLoginForm();
 				loginForm.setVisible(true);
+<<<<<<< HEAD
 				loginForm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 			
+=======
+				loginForm
+						.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+				
+>>>>>>> origin/master
 			}
 			return metadataConnection;
 		} catch (LoginFault ex) {
