@@ -3,8 +3,9 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="lib" path="//SAURABHGUPTA-PC/Shared Folder/metadata/metadata.jar"/>
-	<classpathentry kind="lib" path="//SAURABHGUPTA-PC/Shared Folder/poi-3.10-FINAL-20140208.jar"/>
-	<classpathentry kind="lib" path="F:/Shared Folder/force-wsc-30.0.0.jar"/>
-	<classpathentry kind="lib" path="F:/Shared Folder/partner.jar"/>
+	<classpathentry kind="lib" path="//SAURABHGUPTA-PC/Shared Folder/JAR FILES/partner.jar"/>
+	<classpathentry kind="lib" path="//SAURABHGUPTA-PC/Shared Folder/JAR FILES/tooling.jar"/>
+	<classpathentry kind="lib" path="//SAURABHGUPTA-PC/Shared Folder/JAR FILES/force-wsc-30.0.0.jar"/>
+	<classpathentry kind="lib" path="//SAURABHGUPTA-PC/Shared Folder/JAR FILES/poi-3.10-FINAL-20140208.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -35,17 +35,17 @@ public class ConfigBookMain {
 				CreateConfigBook.ConfigBookWrite();
 				System.out.println("ConfigBook Created Successfully...");
 			} catch (SAXException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				
 				System.out
 						.println("Please check that configuration file has been configured as per documentation and user has write access to the path specified.");
 			} catch (ParserConfigurationException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		}
@@ -75,12 +75,12 @@ public class ConfigBookMain {
 					System.out.println("Please Enter all the Details!");
 				}
 			} else {
-				//Displays form 
+				//Displays form  
 				SalesforceLoginForm loginForm = new SalesforceLoginForm();
 				loginForm.setVisible(true);
 				loginForm
 						.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-				// success = true;
+				
 			}
 			return metadataConnection;
 		} catch (LoginFault ex) {
